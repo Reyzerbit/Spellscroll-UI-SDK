@@ -19,11 +19,9 @@ jobs:
           node-version: 20
 
       - name: Install SDK dependencies
-        working-directory: spellscroll-ui-sdk
         run: npm install
 
       - name: Pack SDK
-        working-directory: spellscroll-ui-sdk
         run: npm pack
 
       - name: Create GitHub Release
@@ -33,4 +31,4 @@ jobs:
           gh release create "$GITHUB_REF_NAME" \
             --title "Release $GITHUB_REF_NAME" \
             --generate-notes \
-            spellscroll-ui-sdk/spellscroll-ui-sdk-*.tgz
+            spellscroll-ui-sdk-*.tgz
