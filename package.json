@@ -6,6 +6,9 @@
     "spellscroll-build": "src/cli/build.js",
     "spellscroll-serve": "src/cli/serve.js"
   },
+  "files": [
+    "src"
+  ],
   "exports": {
     ".": "./src/runtime/index.js"
   },
