@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { sassPlugin } from 'esbuild-sass-plugin';
+import * as sass from 'sass';
 
 function cssInjectContents(css)
 {
@@ -18,6 +18,21 @@ function cssInjectPlugin()
             {
                 const css = await fs.promises.readFile(args.path, 'utf8');
                 return { contents: cssInjectContents(css), loader: 'js' };
+            });
+        },
+    };
+}
+
+function scssInjectPlugin()
+{
+    return {
+        name: 'scss-inject',
+        setup(build)
+        {
+            build.onLoad({ filter: /\.scss$/ }, (args) =>
+            {
+                const result = sass.compile(args.path);
+                return { contents: cssInjectContents(result.css), loader: 'js' };
             });
         },
     };
@@ -45,9 +60,6 @@ export function buildConfig(config, outfile)
             '.woff': 'dataurl',
             '.woff2':'dataurl',
         },
-        plugins: [
-            sassPlugin({ transform: (source) => ({ contents: cssInjectContents(source), loader: 'js' }) }),
-            cssInjectPlugin(),
-        ],
+        plugins: [scssInjectPlugin(), cssInjectPlugin()],
     };
 }

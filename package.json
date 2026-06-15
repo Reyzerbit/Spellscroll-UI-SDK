@@ -1,6 +1,6 @@
 {
   "name": "@spellscroll/ui-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Build tools and runtime utilities for Spellscroll UI modules",
   "repository": {
@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "esbuild": "*",
-    "esbuild-sass-plugin": "*"
+    "sass": "*"
   }
 }
