@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Build tools and runtime utilities for Spellscroll UI modules",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reyzerbit/Spellscroll-UI-SDK.git"
+  },
+  "homepage": "https://github.com/Reyzerbit/Spellscroll-UI-SDK#readme",
+  "bugs": {
+    "url": "https://github.com/Reyzerbit/Spellscroll-UI-SDK/issues"
+  },
   "bin": {
     "spellscroll-build": "src/cli/build.js",
     "spellscroll-serve": "src/cli/serve.js"
