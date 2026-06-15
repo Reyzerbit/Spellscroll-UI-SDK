@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-'use strict';
-const esbuild             = require('esbuild');
-const fs                  = require('fs');
-const path                = require('path');
-const { loadConfig }      = require('../lib/config-loader.js');
-const { buildConfig }     = require('../lib/esbuild.config.js');
+import esbuild from 'esbuild';
+import fs from 'fs';
+import path from 'path';
+import { loadConfig } from '../lib/config-loader.js';
+import { buildConfig } from '../lib/esbuild.config.js';
 
 const config  = loadConfig();
 const outfile = config.outfile;

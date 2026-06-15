@@ -1,6 +1,8 @@
-'use strict';
-const path = require('path');
-const fs   = require('fs');
+import path from 'path';
+import fs from 'fs';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const DEFAULTS = {
     entryPoint:   'src/ui.jsx',
@@ -10,7 +12,7 @@ const DEFAULTS = {
     servePath:    '/ui.js',
 };
 
-function loadConfig()
+export function loadConfig()
 {
     const cwd        = process.cwd();
     let   userConfig = {};
@@ -37,5 +39,3 @@ function loadConfig()
         serveOutfile: path.resolve(cwd, merged.serveOutfile),
     };
 }
-
-module.exports = { loadConfig };

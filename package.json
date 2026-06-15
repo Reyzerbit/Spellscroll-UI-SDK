@@ -1,6 +1,7 @@
 {
   "name": "@spellscroll/ui-sdk",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "type": "module",
   "description": "Build tools and runtime utilities for Spellscroll UI modules",
   "bin": {
     "spellscroll-build": "src/cli/build.js",

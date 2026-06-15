@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-const esbuild         = require('esbuild');
-const http            = require('http');
-const fs              = require('fs');
-const path            = require('path');
-const { loadConfig }  = require('../lib/config-loader.js');
-const { buildConfig } = require('../lib/esbuild.config.js');
+import esbuild from 'esbuild';
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { loadConfig } from '../lib/config-loader.js';
+import { buildConfig } from '../lib/esbuild.config.js';
 
 async function main()
 {

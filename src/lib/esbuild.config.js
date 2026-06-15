@@ -1,5 +1,4 @@
-'use strict';
-const fs = require('fs');
+import fs from 'fs';
 
 function cssInjectPlugin()
 {
@@ -22,7 +21,7 @@ document.head.appendChild(__style);`,
     };
 }
 
-function buildConfig(config, outfile)
+export function buildConfig(config, outfile)
 {
     return {
         entryPoints: [config.entryPoint],
@@ -47,5 +46,3 @@ function buildConfig(config, outfile)
         plugins: [cssInjectPlugin()],
     };
 }
-
-module.exports = { buildConfig };
