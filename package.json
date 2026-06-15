@@ -1,6 +1,6 @@
 {
   "name": "@spellscroll/ui-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Build tools and runtime utilities for Spellscroll UI modules",
   "repository": {
@@ -12,8 +12,9 @@
     "url": "https://github.com/Reyzerbit/Spellscroll-UI-SDK/issues"
   },
   "bin": {
-    "spellscroll-build": "src/cli/build.js",
-    "spellscroll-serve": "src/cli/serve.js"
+    "spellscroll-build":      "src/cli/build.js",
+    "spellscroll-serve":      "src/cli/serve.js",
+    "spellscroll-gen-config": "src/cli/gen-config.js"
   },
   "files": [
     "src"
@@ -25,6 +26,7 @@
     "react": "*"
   },
   "dependencies": {
-    "esbuild": "*"
+    "esbuild": "*",
+    "esbuild-sass-plugin": "*"
   }
 }

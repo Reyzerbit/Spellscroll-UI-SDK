@@ -1,4 +1,12 @@
 import fs from 'fs';
+import { sassPlugin } from 'esbuild-sass-plugin';
+
+function cssInjectContents(css)
+{
+    return `const __style = document.createElement('style');
+__style.textContent = ${JSON.stringify(css)};
+document.head.appendChild(__style);`;
+}
 
 function cssInjectPlugin()
 {
@@ -9,13 +17,7 @@ function cssInjectPlugin()
             build.onLoad({ filter: /\.css$/ }, async (args) =>
             {
                 const css = await fs.promises.readFile(args.path, 'utf8');
-                return {
-                    contents: `
-const __style = document.createElement('style');
-__style.textContent = ${JSON.stringify(css)};
-document.head.appendChild(__style);`,
-                    loader: 'js',
-                };
+                return { contents: cssInjectContents(css), loader: 'js' };
             });
         },
     };
@@ -43,6 +45,9 @@ export function buildConfig(config, outfile)
             '.woff': 'dataurl',
             '.woff2':'dataurl',
         },
-        plugins: [cssInjectPlugin()],
+        plugins: [
+            sassPlugin({ transform: (source) => ({ contents: cssInjectContents(source), loader: 'js' }) }),
+            cssInjectPlugin(),
+        ],
     };
 }

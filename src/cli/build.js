@@ -5,7 +5,7 @@ import path from 'path';
 import { loadConfig } from '../lib/config-loader.js';
 import { buildConfig } from '../lib/esbuild.config.js';
 
-const config  = loadConfig();
+const config  = await loadConfig();
 const outfile = config.outfile;
 
 fs.mkdirSync(path.dirname(outfile), { recursive: true });

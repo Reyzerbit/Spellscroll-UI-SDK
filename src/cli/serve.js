@@ -8,7 +8,7 @@ import { buildConfig } from '../lib/esbuild.config.js';
 
 async function main()
 {
-    const config    = loadConfig();
+    const config    = await loadConfig();
     const outfile   = config.serveOutfile;
     const port      = config.port;
     const servePath = config.servePath;

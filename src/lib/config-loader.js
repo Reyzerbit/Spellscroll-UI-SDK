@@ -1,8 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
+import { pathToFileURL } from 'url';
 
 const DEFAULTS = {
     entryPoint:   'src/ui.jsx',
@@ -12,7 +10,7 @@ const DEFAULTS = {
     servePath:    '/ui.js',
 };
 
-export function loadConfig()
+export async function loadConfig()
 {
     const cwd        = process.cwd();
     let   userConfig = {};
@@ -22,7 +20,8 @@ export function loadConfig()
 
     if (fs.existsSync(configFile))
     {
-        userConfig = require(configFile);
+        const mod  = await import(pathToFileURL(configFile).href);
+        userConfig = mod.default ?? mod;
     }
     else if (fs.existsSync(pkgFile))
     {
