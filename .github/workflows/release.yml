@@ -20,8 +20,14 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: Install SDK dependencies
         run: npm install
+
+      - name: Publish to npm
+        run: npm publish --access public --provenance
 
       - name: Pack SDK
         run: npm pack
@@ -34,6 +40,3 @@ jobs:
             --title "Release $GITHUB_REF_NAME" \
             --generate-notes \
             spellscroll-ui-sdk-*.tgz
-
-      - name: Publish to npm
-        run: npm publish --access public --provenance
