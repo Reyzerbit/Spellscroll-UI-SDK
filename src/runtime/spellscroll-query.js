@@ -1,3 +1,22 @@
+const endpoints = new Map();
+
+export function useMessageEndpointRegistry()
+{
+    return (key, handler) => endpoints.set(key, handler);
+}
+
+window.spellscrollReceive = function(endpoint, data)
+{
+    const handler = endpoints.get(endpoint);
+    if (!handler)
+    {
+        console.warn('[Spellscroll] Received message for unregistered endpoint:', endpoint);
+        return;
+    }
+    try { handler(data); }
+    catch (e) { console.error('[Spellscroll] Error in message endpoint handler:', endpoint, e); }
+};
+
 export function useSpellscrollMessaging()
 {
     if (!window?.spellscrollQuery) throw new Error('App is not running inside a Spellscroll instance!');

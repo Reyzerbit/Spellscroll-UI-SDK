@@ -1,1 +1,1 @@
-export { useSpellscrollMessaging } from './spellscroll-query.js';
+export { useSpellscrollMessaging, useMessageEndpointRegistry } from './spellscroll-query.js';

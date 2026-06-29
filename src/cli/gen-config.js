@@ -13,11 +13,11 @@ if (fs.existsSync(dest))
 
 const template =
 `export default {
-    entryPoint:   'src/ui.jsx',
-    outfile:      '../build/generated/frontend/ui.js',
-    serveOutfile: '../build/serve/ui.js',
+    entryPoint:   'src/main.jsx',
+    outfile:      '../build/generated/frontend/main.js',
+    serveOutfile: '../build/serve/main.js',
     port:         3001,
-    servePath:    '/ui.js',
+    servePath:    '/main.js',
 };
 `;
 

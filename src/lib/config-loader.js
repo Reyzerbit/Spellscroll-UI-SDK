@@ -3,11 +3,11 @@ import fs from 'fs';
 import { pathToFileURL } from 'url';
 
 const DEFAULTS = {
-    entryPoint:   'src/ui.jsx',
-    outfile:      'dist/ui.js',
-    serveOutfile: 'dist/serve/ui.js',
+    entryPoint:   'src/main.jsx',
+    outfile:      'dist/main.js',
+    serveOutfile: 'dist/serve/main.js',
     port:         3001,
-    servePath:    '/ui.js',
+    servePath:    '/main.js',
 };
 
 export async function loadConfig()
